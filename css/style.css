@@ -46,7 +46,7 @@ nav {
 }
 
 .nav-inner {
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -86,14 +86,14 @@ nav {
 
 /* ---- LAYOUT ---- */
 .container {
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .page-content {
   padding: 32px 20px 64px;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -132,7 +132,7 @@ nav {
 }
 
 .nbhd-hero-inner {
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
@@ -180,7 +180,7 @@ nav {
 }
 
 .quick-stats-inner {
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
   display: flex;
   gap: 32px;
