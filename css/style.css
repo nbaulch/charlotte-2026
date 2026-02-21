@@ -3,6 +3,7 @@
    ============================================================ */
 
 :root {
+  --max-w:      960px;
   --navy:       #1a3a5c;
   --teal:       #0d7a8a;
   --teal-light: #e8f4f6;
@@ -46,7 +47,7 @@ nav {
 }
 
 .nav-inner {
-  max-width: 960px;
+  max-width: var(--max-w);
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -86,14 +87,14 @@ nav {
 
 /* ---- LAYOUT ---- */
 .container {
-  max-width: 960px;
+  max-width: var(--max-w);
   margin: 0 auto;
   padding: 0 20px;
 }
 
 .page-content {
   padding: 32px 20px 64px;
-  max-width: 960px;
+  max-width: var(--max-w);
   margin: 0 auto;
 }
 
@@ -103,6 +104,11 @@ nav {
   color: white;
   padding: 56px 20px 48px;
   text-align: center;
+}
+
+.hero-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
 }
 
 .hero h1 {
@@ -132,7 +138,7 @@ nav {
 }
 
 .nbhd-hero-inner {
-  max-width: 960px;
+  max-width: var(--max-w);
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
@@ -180,7 +186,7 @@ nav {
 }
 
 .quick-stats-inner {
-  max-width: 960px;
+  max-width: var(--max-w);
   margin: 0 auto;
   display: flex;
   gap: 32px;
