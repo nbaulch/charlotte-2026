@@ -102,25 +102,25 @@
     <div class="sidebar-card">
       <h3>Strong &amp; Moderate-Strong Fits</h3>
       <ul class="hood-list">
-        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="chantilly.html">Chantilly</a><span class="hood-fit-badge" style="background:#2d7a27">Strong</span></li>
-        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="plaza-midwood.html">Plaza Midwood</a><span class="hood-fit-badge" style="background:#2d7a27">Strong</span></li>
-        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="commonwealth.html">Commonwealth</a><span class="hood-fit-badge" style="background:#2d7a27">Strong</span></li>
-        <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="dilworth.html">Dilworth</a><span class="hood-fit-badge" style="background:#0d7a8a">Mod-Strong</span></li>
-        <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="wesley-heights.html">Wesley Heights</a><span class="hood-fit-badge" style="background:#0d7a8a">Mod-Strong</span></li>
+        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="chantilly.html">Chantilly</a><span class="hood-fit-badge">Strong</span></li>
+        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="plaza-midwood.html">Plaza Midwood</a><span class="hood-fit-badge">Strong</span></li>
+        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="commonwealth.html">Commonwealth</a><span class="hood-fit-badge">Strong</span></li>
+        <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="dilworth.html">Dilworth</a><span class="hood-fit-badge">Mod-Strong</span></li>
+        <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="wesley-heights.html">Wesley Heights</a><span class="hood-fit-badge">Mod-Strong</span></li>
       </ul>
     </div>
     <div class="sidebar-card">
       <h3>Moderate, Weak &amp; Reference</h3>
       <ul class="hood-list">
-        <li><span class="hood-dot" style="background:#c8922a"></span><a href="sedgefield.html">Sedgefield</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
-        <li><span class="hood-dot" style="background:#c8922a"></span><a href="wilmore.html">Wilmore</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
-        <li><span class="hood-dot" style="background:#c8922a"></span><a href="colonial-village.html">Colonial Village</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
-        <li><span class="hood-dot" style="background:#c8922a"></span><a href="plaza-hills.html">Plaza Hills</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
-        <li><span class="hood-dot" style="background:#c8922a"></span><a href="ashbrook-clawson.html">Ashbrook-Clawson</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
-        <li><span class="hood-dot" style="background:#e87722"></span><a href="elizabeth.html">Elizabeth</a><span class="hood-fit-badge" style="background:#e87722">Weak-Mod</span></li>
-        <li><span class="hood-dot" style="background:#cc3300"></span><a href="noda.html">NoDa</a><span class="hood-fit-badge" style="background:#cc3300">Skip</span></li>
-        <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="myers-park.html">Myers Park</a><span class="hood-fit-badge" style="background:#5f8dc8">Reference</span></li>
-        <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="eastover.html">Eastover</a><span class="hood-fit-badge" style="background:#5f8dc8">Reference</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="sedgefield.html">Sedgefield</a><span class="hood-fit-badge">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="wilmore.html">Wilmore</a><span class="hood-fit-badge">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="colonial-village.html">Colonial Village</a><span class="hood-fit-badge">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="plaza-hills.html">Plaza Hills</a><span class="hood-fit-badge">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="ashbrook-clawson.html">Ashbrook-Clawson</a><span class="hood-fit-badge">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#e87722"></span><a href="elizabeth.html">Elizabeth</a><span class="hood-fit-badge">Weak-Mod</span></li>
+        <li><span class="hood-dot" style="background:#cc3300"></span><a href="noda.html">NoDa</a><span class="hood-fit-badge">Skip</span></li>
+        <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="myers-park.html">Myers Park</a><span class="hood-fit-badge">Reference</span></li>
+        <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="eastover.html">Eastover</a><span class="hood-fit-badge">Reference</span></li>
       </ul>
     </div>
   </div>
@@ -251,7 +251,7 @@ fetch('npa_boundaries.geojson')
             .setContent(
               '<div class="popup-inner">'+
               '<h3>'+hood.name+'</h3>'+
-              '<span class="popup-fit-pill" style="background:'+hood.color+'">'+hood.fit+'</span>'+
+              '<span class="popup-fit-pill">'+hood.fit+'</span>'+
               '<p>'+hood.desc+'</p>'+
               '<div class="popup-detail"><strong>Commute:</strong> '+hood.commute+'<br><strong>Schools:</strong> '+hood.schools+'</div>'+
               '<a class="popup-link" href="'+hood.page+'">Full Profile &rarr;</a>'+

@@ -155,14 +155,13 @@ nav {
 
 .fit-badge {
   display: inline-block;
-  padding: 4px 11px;
-  border-radius: 24px;
-  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   white-space: nowrap;
-  margin-top: 4px;
 }
 
 .fit-strong          { background: var(--fit-strong); color: white; }
@@ -689,8 +688,8 @@ footer a { color: rgba(255,255,255,0.8); }
   .nbhd-hero h1 { font-size: 1.4rem; margin-bottom: 4px; }
   .nbhd-hero .summary { font-size: 0.86rem; }
 
-  /* ---- Fit badges — smaller everywhere ---- */
-  .fit-badge { padding: 2px 7px; font-size: 0.6rem; letter-spacing: 0.02em; }
+  /* ---- Fit badges — even smaller on mobile ---- */
+  .fit-badge { padding: 1px 6px; font-size: 0.58rem; }
 
   /* ---- Page structure ---- */
   .page-content { padding: 12px 10px 36px; }
