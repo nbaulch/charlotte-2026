@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neighborhood Map | Charlotte 2026</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    .map-page-wrap{max-width:1280px;margin:0 auto;padding:0 1.5rem 3rem;}
+    .map-page-header{padding:2rem 0 1.25rem;display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .map-page-header h1{font-size:2rem;font-weight:700;color:#1a1a2e;margin:0 0 .4rem;}
+    .map-page-header p{color:#555;font-size:.9rem;margin:0;}
+    .map-back{font-size:.85rem;color:var(--teal,#0d7a8a);text-decoration:none;white-space:nowrap;}
+    .map-back:hover{text-decoration:underline;}
+    #map-wrap{border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.14);border:1px solid #dde3ea;position:relative;}
+    #map{height:700px;width:100%;}
+    .map-loading{
+      display:none;position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+      background:rgba(26,26,46,.85);color:white;padding:6px 16px;border-radius:20px;
+      font-size:.8rem;z-index:1000;pointer-events:none;letter-spacing:.02em;
+    }
+    .map-loading.visible{display:block;}
+
+    /* Fit rating legend */
+    .map-legend{background:white;border-radius:10px;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.18);min-width:180px;font-size:.82rem;line-height:1.4;}
+    .map-legend h4{margin:0 0 10px;font-size:.78rem;font-weight:700;color:#1a1a2e;text-transform:uppercase;letter-spacing:.05em;}
+    .legend-item{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+    .legend-item:last-child{margin-bottom:0;}
+    .legend-swatch{width:18px;height:12px;border-radius:3px;flex-shrink:0;border:1px solid rgba(0,0,0,.18);}
+    .legend-swatch.line{height:4px;border-radius:2px;border:none;}
+    .legend-swatch.dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.25);}
+    .legend-divider{border:none;border-top:1px solid #eee;margin:8px 0;}
+
+    /* Neighborhood sidebar */
+    .map-sidebar{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem;}
+    .sidebar-card{background:#fff;border-radius:10px;padding:1.25rem 1.4rem;border:1px solid #dde3ea;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+    .sidebar-card h3{font-size:.95rem;font-weight:700;margin:0 0 .75rem;color:#1a1a2e;}
+    .hood-list{list-style:none;margin:0;padding:0;}
+    .hood-list li{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #f2f2f2;font-size:.85rem;}
+    .hood-list li:last-child{border-bottom:none;}
+    .hood-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+    .hood-list a{color:#1a1a2e;text-decoration:none;font-weight:500;}
+    .hood-list a:hover{text-decoration:underline;}
+    .hood-fit-badge{margin-left:auto;font-size:.7rem;padding:2px 7px;border-radius:20px;font-weight:600;color:white;white-space:nowrap;}
+
+    /* Popups */
+    .leaflet-popup-content-wrapper{border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,.2);}
+    .popup-inner{min-width:210px;max-width:300px;}
+    .popup-inner h3{margin:0 0 6px;font-size:.95rem;font-weight:700;color:#1a1a2e;}
+    .popup-fit-pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.72rem;font-weight:700;color:white;margin-bottom:8px;}
+    .popup-inner p{font-size:.82rem;color:#555;margin:0 0 8px;line-height:1.4;}
+    .popup-detail{font-size:.78rem;color:#444;margin-bottom:8px;line-height:1.5;}
+    .popup-link{display:inline-block;background:#1a1a2e;color:white!important;text-decoration:none;padding:5px 14px;border-radius:6px;font-size:.78rem;font-weight:600;}
+    .popup-link:hover{background:#2d3561;}
+
+    /* Layer control tweaks */
+    .leaflet-control-layers{font-size:.82rem;border-radius:8px!important;}
+    .leaflet-control-layers-expanded{padding:10px 14px!important;}
+    .leaflet-control-layers-overlays label{display:flex;align-items:center;gap:5px;padding:3px 0;cursor:pointer;}
+    .leaflet-control-layers-separator{margin:6px 0!important;}
+
+    @media(max-width:700px){
+      #map{height:480px;}
+      .map-sidebar{grid-template-columns:1fr;}
+      .map-page-header{flex-direction:column;align-items:flex-start;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">🏠 Charlotte 2026</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="var nl=this.nextElementSibling;nl.classList.toggle('open');this.textContent=nl.classList.contains('open')?'✕':'☰'">☰</button>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="index.html" class="active">Neighborhoods</a>
+      <a href="../schools/index.html">Schools</a>
+      <a href="../commutes/index.html">Commutes</a>
+      <a href="../amenities/index.html">Amenities</a>
+      <a href="../dining/index.html">Dining</a>
+      <a href="../real-estate/index.html">Real Estate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="map-page-wrap">
+  <div class="map-page-header">
+    <div>
+      <h1>Neighborhood Map</h1>
+      <p>14 target neighborhoods color-coded by fit. Toggle layers for parks, bike routes, and future school boundaries. Click anything to see details.</p>
+    </div>
+    <a class="map-back" href="index.html">← Back to all neighborhoods</a>
+  </div>
+
+  <div id="map-wrap">
+    <div id="map"></div>
+    <div class="map-loading" id="map-loading">Loading layer data…</div>
+  </div>
+
+  <div class="map-sidebar">
+    <div class="sidebar-card">
+      <h3>Strong &amp; Moderate-Strong Fits</h3>
+      <ul class="hood-list">
+        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="chantilly.html">Chantilly</a><span class="hood-fit-badge" style="background:#2d7a27">Strong</span></li>
+        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="plaza-midwood.html">Plaza Midwood</a><span class="hood-fit-badge" style="background:#2d7a27">Strong</span></li>
+        <li><span class="hood-dot" style="background:#2d7a27"></span><a href="commonwealth.html">Commonwealth</a><span class="hood-fit-badge" style="background:#2d7a27">Strong</span></li>
+        <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="dilworth.html">Dilworth</a><span class="hood-fit-badge" style="background:#0d7a8a">Mod-Strong</span></li>
+        <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="wesley-heights.html">Wesley Heights</a><span class="hood-fit-badge" style="background:#0d7a8a">Mod-Strong</span></li>
+      </ul>
+    </div>
+    <div class="sidebar-card">
+      <h3>Moderate, Weak &amp; Reference</h3>
+      <ul class="hood-list">
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="sedgefield.html">Sedgefield</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="wilmore.html">Wilmore</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="colonial-village.html">Colonial Village</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="plaza-hills.html">Plaza Hills</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="ashbrook-clawson.html">Ashbrook-Clawson</a><span class="hood-fit-badge" style="background:#c8922a">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#e87722"></span><a href="elizabeth.html">Elizabeth</a><span class="hood-fit-badge" style="background:#e87722">Weak-Mod</span></li>
+        <li><span class="hood-dot" style="background:#cc3300"></span><a href="noda.html">NoDa</a><span class="hood-fit-badge" style="background:#cc3300">Skip</span></li>
+        <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="myers-park.html">Myers Park</a><span class="hood-fit-badge" style="background:#5f8dc8">Reference</span></li>
+        <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="eastover.html">Eastover</a><span class="hood-fit-badge" style="background:#5f8dc8">Reference</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Charlotte Relocation Research &mdash; Compiled February 2026</p>
+  <p style="margin-top:4px;">Map data: Mecklenburg County GIS (parks, school boundaries), Charlotte/Mecklenburg GIS (bike routes), OpenStreetMap contributors</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ─── NPA neighborhood data ───────────────────────────────────────────────────
+var npaData = {
+  3:   {name:"Dilworth", fit:"Moderate-Strong Fit", fitShort:"Mod-Strong", color:"#0d7a8a", page:"dilworth.html",
+        desc:"Charlotte's most walkable inner-ring neighborhood. Latta Park is the family hub. Biking infrastructure, coffee + dining on East Blvd.",
+        commute:"~2 mi to Uptown — 10–15 min bike", schools:"Park Road Elem (new, fall 2026)"},
+  200: {name:"Chantilly", fit:"Strong Fit", fitShort:"Strong", color:"#2d7a27", page:"chantilly.html",
+        desc:"Small, tight-knit gem between Elizabeth and Plaza Midwood. Bungalow character, 70% homeownership, the 'Chantilly Shuffle'. Closest match to Lynnhurst.",
+        commute:"~2.5 mi to Uptown — ~12 min bike", schools:"Eastover Elem 10/10"},
+  378: {name:"Plaza Midwood / Commonwealth", fit:"Strong Fit", fitShort:"Strong", color:"#2d7a27", page:"plaza-midwood.html",
+        desc:"Eclectic and walkable. Best coffee + dining scene of any target neighborhood. 1920s–1960s bungalows. Strong young-family presence.",
+        commute:"~3 mi to Uptown — 8–12 min bike ⭐", schools:"Shamrock Gardens Elem 5/10 ⚠️ — plan magnet/charter"},
+  9:   {name:"Commonwealth", fit:"Strong Fit", fitShort:"Strong", color:"#2d7a27", page:"commonwealth.html",
+        desc:"Quieter pocket east of Plaza Midwood. Character craftsman homes, Little Sugar Creek Greenway access, walkable to the Central Ave scene.",
+        commute:"~3.5 mi to Uptown — ~12 min bike", schools:"Shamrock Gardens Elem 5/10 ⚠️"},
+  363: {name:"NoDa", fit:"Skip", fitShort:"Skip", color:"#cc3300", page:"noda.html",
+        desc:"Vibrant arts district. Great for nightlife and culture; SFH inventory is very limited and family-neighborhood feel is weak.",
+        commute:"~2.5 mi via Gold Line light rail", schools:"Limited neighborhood school options"},
+  369: {name:"NoDa (North)", fit:"Skip", fitShort:"Skip", color:"#cc3300", page:"noda.html",
+        desc:"Northern NoDa fringe. Arts district character — limited SFH inventory for families.",
+        commute:"~3 mi to Uptown", schools:"Limited neighborhood school options"},
+  388: {name:"Wilmore", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"wilmore.html",
+        desc:"Small historic neighborhood just south of Dilworth. Closest bike commute to Uptown of any neighborhood (~1.5 mi). Still transitioning.",
+        commute:"~1.5 mi to Uptown — ~8 min bike ⭐", schools:"Park Road Elem (new, fall 2026)"},
+  361: {name:"Wesley Heights", fit:"Moderate-Strong Fit", fitShort:"Mod-Strong", color:"#0d7a8a", page:"wesley-heights.html",
+        desc:"Emerging west-side neighborhood. Stewart Creek Greenway runs directly to Uptown. Authentic bungalow character. Best west-side option.",
+        commute:"~2 mi via Stewart Creek Greenway — ~14 min bike ⭐", schools:"Ashley Park PreK-8"},
+  476: {name:"Colonial Village", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"colonial-village.html",
+        desc:"Stable, safe neighborhood adjacent to Elizabeth. Mid-century homes on larger lots. Less walkable and less energetic than top picks.",
+        commute:"~2.5 mi to Uptown — ~12 min bike", schools:"Eastover Elem"},
+  315: {name:"Plaza Hills", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"plaza-hills.html",
+        desc:"More suburban feel east of Plaza Midwood. Good budget value. Little Sugar Creek Greenway access. Less neighborhood energy than PM.",
+        commute:"~4 mi to Uptown — ~20 min bike", schools:"Shamrock Gardens Elem ⚠️"},
+  367: {name:"Elizabeth", fit:"Weak-Moderate Fit", fitShort:"Weak-Mod", color:"#e87722", page:"elizabeth.html",
+        desc:"Historic architecture, great coffee/dining, excellent bike commute. But only 8% of households have children — the lowest of any neighborhood.",
+        commute:"~1.5 mi to Uptown — ~8–15 min bike", schools:"Eastover Elem 10/10 (if zoned)"},
+  11:  {name:"Sedgefield / Myers Park Edge", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"sedgefield.html",
+        desc:"NPA straddling Sedgefield north and Myers Park southern fringe. Established, good schools, greenway access, limited walkability.",
+        commute:"~4 mi to Uptown — ~18 min bike", schools:"Selwyn Elem / Myers Park Traditional"},
+  357: {name:"Sedgefield", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"sedgefield.html",
+        desc:"Charming 1930s–1950s bungalows at better prices than Dilworth. Sedgefield Montessori (public magnet) is excellent. Greenway access.",
+        commute:"~3.5 mi to Uptown — ~18 min bike", schools:"Dilworth Elem or Sedgefield Montessori"},
+  24:  {name:"Ashbrook-Clawson", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"ashbrook-clawson.html",
+        desc:"West-side neighborhood with affordable character homes and a growing community. Good greenway access via Little Sugar Creek.",
+        commute:"~4.5 mi to Uptown — ~27–30 min bike", schools:"Berryhill Elem"},
+  381: {name:"Ashbrook-Clawson", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"ashbrook-clawson.html",
+        desc:"West-side neighborhood with affordable character homes. Sugar Creek → Little Sugar Creek greenway connects to Uptown.",
+        commute:"~4.5 mi to Uptown — ~27–30 min bike", schools:"Berryhill Elem"},
+  392: {name:"Myers Park / Eastover", fit:"Reference Only", fitShort:"Reference", color:"#5f8dc8", page:"myers-park.html",
+        desc:"Charlotte's most prestigious address. Stunning tree-lined streets, top schools, highest safety. Homes typically run $1.5M–$3M+.",
+        commute:"~3.5 mi to Uptown — ~18–25 min bike", schools:"Selwyn Elem 9/10 / Eastover Elem 10/10"},
+  163: {name:"Eastover", fit:"Reference Only", fitShort:"Reference", color:"#5f8dc8", page:"eastover.html",
+        desc:"Historic upscale enclave with estate lots. Well above budget ceiling. Included for geographic reference.",
+        commute:"~2.5 mi to Uptown — ~15 min bike", schools:"Eastover Elem 10/10"},
+  364: {name:"Eastover (South)", fit:"Reference Only", fitShort:"Reference", color:"#5f8dc8", page:"eastover.html",
+        desc:"Southern edge of Eastover. Firmly in the luxury tier. Reference only.",
+        commute:"~3 mi to Uptown", schools:"Eastover Elem 10/10"},
+};
+
+// ─── Map setup ────────────────────────────────────────────────────────────────
+var map = L.map('map', {center:[35.208,-80.843], zoom:13});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  maxZoom:19
+}).addTo(map);
+
+// ─── Loading indicator ────────────────────────────────────────────────────────
+var loadingEl = document.getElementById('map-loading');
+var loadingCount = 0;
+function showLoading() { loadingCount++; loadingEl.classList.add('visible'); }
+function hideLoading() { if (--loadingCount <= 0) { loadingCount = 0; loadingEl.classList.remove('visible'); } }
+
+// ─── Color helpers ────────────────────────────────────────────────────────────
+function darken(hex, amt) {
+  var n = parseInt(hex.replace('#',''), 16);
+  var r = Math.max(0, (n >> 16) - Math.round(255*amt));
+  var g = Math.max(0, ((n >> 8) & 255) - Math.round(255*amt));
+  var b = Math.max(0, (n & 255) - Math.round(255*amt));
+  return 'rgb('+r+','+g+','+b+')';
+}
+
+// ─── NPA Neighborhood layer (always visible) ──────────────────────────────────
+fetch('npa_boundaries.geojson')
+  .then(function(r){ return r.json(); })
+  .then(function(geojson){
+    L.geoJSON(geojson, {
+      style: function(feature) {
+        var id = feature.properties.ID;
+        var hood = npaData[id];
+        var col = hood ? hood.color : '#aaa';
+        return {color:darken(col,0.28), weight:2.5, opacity:1, fillColor:col, fillOpacity:0.38};
+      },
+      onEachFeature: function(feature, layer) {
+        var id = feature.properties.ID;
+        var hood = npaData[id];
+        if (!hood) return;
+        var defStyle = {color:darken(hood.color,0.28), weight:2.5, fillColor:hood.color, fillOpacity:0.38};
+        var hovStyle = {color:darken(hood.color,0.45), weight:3.5, fillColor:hood.color, fillOpacity:0.68};
+        layer.on('mouseover', function(e) {
+          this.setStyle(hovStyle); this.bringToFront();
+          L.popup({maxWidth:220, closeButton:false, autoPan:false})
+            .setLatLng(e.latlng)
+            .setContent('<div style="font-weight:700;font-size:.9rem;color:#1a1a2e">'+hood.name+'</div>'+
+              '<div style="font-size:.75rem;color:'+hood.color+';font-weight:600;margin-top:2px">'+hood.fit+'</div>')
+            .openOn(map);
+        });
+        layer.on('mousemove', function(e) {
+          map.openPopup('<div style="font-weight:700;font-size:.9rem;color:#1a1a2e">'+hood.name+'</div>'+
+            '<div style="font-size:.75rem;color:'+hood.color+';font-weight:600;margin-top:2px">'+hood.fit+'</div>',
+            e.latlng, {maxWidth:220, closeButton:false, autoPan:false});
+        });
+        layer.on('mouseout', function() { this.setStyle(defStyle); map.closePopup(); });
+        layer.on('click', function(e) {
+          L.DomEvent.stopPropagation(e);
+          L.popup({maxWidth:340})
+            .setLatLng(e.latlng)
+            .setContent(
+              '<div class="popup-inner">'+
+              '<h3>'+hood.name+'</h3>'+
+              '<span class="popup-fit-pill" style="background:'+hood.color+'">'+hood.fit+'</span>'+
+              '<p>'+hood.desc+'</p>'+
+              '<div class="popup-detail"><strong>Commute:</strong> '+hood.commute+'<br><strong>Schools:</strong> '+hood.schools+'</div>'+
+              '<a class="popup-link" href="'+hood.page+'">Full Profile &rarr;</a>'+
+              '</div>'
+            ).openOn(map);
+        });
+      }
+    }).addTo(map);
+  })
+  .catch(function(err){ console.error('NPA load error:', err); });
+
+// ─── Overlay layer groups (empty until toggled on) ────────────────────────────
+var parksGroup    = L.layerGroup();
+var bikeGroup     = L.layerGroup();
+var schoolsGroup  = L.layerGroup();
+var elemGroup     = L.layerGroup();
+var middGroup     = L.layerGroup();
+var highGroup     = L.layerGroup();
+
+var overlays = {
+  '🌳 Parks':                     parksGroup,
+  '🚲 Suggested Bike Routes':     bikeGroup,
+  '🎓 Schools':                   schoolsGroup,
+  '📐 Elementary Districts (future)': elemGroup,
+  '📐 Middle Districts (future)': middGroup,
+  '📐 High Districts (future)':   highGroup,
+};
+
+L.control.layers(null, overlays, {position:'topright', collapsed:true}).addTo(map);
+
+// ─── Lazy-load logic ──────────────────────────────────────────────────────────
+var loaded = {};
+
+map.on('overlayadd', function(e) {
+  var n = e.name;
+  if (n.includes('Parks') && !loaded.parks)              { loaded.parks=true;   loadParks(); }
+  else if (n.includes('Bike') && !loaded.bike)           { loaded.bike=true;    loadBike(); }
+  else if (n.includes('Schools') && !loaded.schools)     { loaded.schools=true; loadSchools(); }
+  else if (n.includes('Elementary') && !loaded.elem)     { loaded.elem=true;    loadBoundaries('elem_boundaries_future.geojson', elemGroup, '#0d7a8a', 'elem_name', 'Elementary'); }
+  else if (n.includes('Middle') && !loaded.midd)         { loaded.midd=true;    loadBoundaries('midd_boundaries_future.geojson', middGroup, '#6a0dad', 'midd_name', 'Middle School'); }
+  else if (n.includes('High') && !loaded.high)           { loaded.high=true;    loadBoundaries('high_boundaries_future.geojson', highGroup, '#c8922a', 'high_name', 'High School'); }
+});
+
+// Parks ──────────────────────────────────────────────────────────────────────
+function loadParks() {
+  showLoading();
+  fetch('parks.geojson')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      L.geoJSON(data, {
+        filter: function(f){ return f.properties.prkstatus === 'Developed'; },
+        pointToLayer: function(f, ll){
+          return L.circleMarker(ll, {
+            radius:5, fillColor:'#2d7a27', color:'#155215', weight:1, opacity:1, fillOpacity:0.85
+          });
+        },
+        onEachFeature: function(f, layer){
+          var p = f.properties;
+          layer.bindPopup(
+            '<strong style="font-size:.9rem">'+p.prkname+'</strong><br>'+
+            '<span style="color:#555;font-size:.8rem">'+p.prktype+'</span><br>'+
+            '<small style="color:#777">'+p.prkaddr+'</small>'
+          );
+        }
+      }).addTo(parksGroup);
+    })
+    .catch(function(e){ console.error('Parks load error:', e); })
+    .finally(hideLoading);
+}
+
+// Bike routes ─────────────────────────────────────────────────────────────────
+// ComfortInd: 0 = lowest comfort (major road), higher = more comfortable
+// Colors: red → orange → yellow → teal → green (stress → comfort)
+var bikeColors = ['#cc3300','#e87722','#c8922a','#5f8dc8','#0d7a8a','#2d7a27'];
+var bikeLabels = ['Major road (high stress)','Arterial w/ shoulder','Mixed traffic (moderate)','Bike lane','Protected/low-traffic','Greenway / off-road'];
+
+function loadBike() {
+  showLoading();
+  fetch('bike_routes.geojson')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      L.geoJSON(data, {
+        style: function(f){
+          var ci = parseInt(f.properties.ComfortInd || 0);
+          return {
+            color: bikeColors[Math.min(ci, 5)] || '#5f8dc8',
+            weight: 2,
+            opacity: 0.75
+          };
+        },
+        onEachFeature: function(f, layer){
+          var ci = parseInt(f.properties.ComfortInd || 0);
+          layer.bindPopup(
+            '<strong style="font-size:.88rem">Suggested Bike Route</strong><br>'+
+            '<span style="color:'+bikeColors[Math.min(ci,5)]+';font-weight:600">'+
+            (bikeLabels[Math.min(ci,5)] || 'Bike route')+'</span><br>'+
+            '<small style="color:#777">Comfort Index: '+ci+'</small>'
+          );
+        }
+      }).addTo(bikeGroup);
+    })
+    .catch(function(e){ console.error('Bike routes load error:', e); })
+    .finally(hideLoading);
+}
+
+// Schools ─────────────────────────────────────────────────────────────────────
+var schoolTypeColors = {'Elementary':'#0d7a8a','Middle':'#6a0dad','High':'#c8922a','Other':'#777'};
+function loadSchools() {
+  showLoading();
+  fetch('schools_points.geojson')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      L.geoJSON(data, {
+        pointToLayer: function(f, ll){
+          var col = schoolTypeColors[f.properties.type] || schoolTypeColors.Other;
+          return L.circleMarker(ll, {
+            radius:7, fillColor:col, color:'#222', weight:1.5, opacity:1, fillOpacity:0.92
+          });
+        },
+        onEachFeature: function(f, layer){
+          var p = f.properties;
+          var col = schoolTypeColors[p.type] || schoolTypeColors.Other;
+          layer.bindPopup(
+            '<strong style="font-size:.9rem">'+p.name+'</strong><br>'+
+            '<span style="color:'+col+';font-weight:600;font-size:.8rem">'+p.type+'</span><br>'+
+            '<small style="color:#777">'+p.address+'</small>'
+          );
+        }
+      }).addTo(schoolsGroup);
+    })
+    .catch(function(e){ console.error('Schools load error:', e); })
+    .finally(hideLoading);
+}
+
+// School boundaries ────────────────────────────────────────────────────────────
+function loadBoundaries(file, group, color, nameField, label) {
+  showLoading();
+  fetch(file)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      L.geoJSON(data, {
+        style: {
+          color: color,
+          weight: 1.5,
+          opacity: 0.85,
+          fillColor: color,
+          fillOpacity: 0.06,
+          dashArray: '5,4'
+        },
+        onEachFeature: function(f, layer){
+          var name = f.properties[nameField] || 'Unknown';
+          layer.bindTooltip(name, {
+            permanent: false,
+            direction: 'center',
+            className: 'school-boundary-label'
+          });
+          layer.bindPopup(
+            '<strong style="font-size:.88rem">'+label+' District</strong><br>'+
+            '<span style="font-size:.85rem;color:#333">'+name+'</span>'
+          );
+        }
+      }).addTo(group);
+    })
+    .catch(function(e){ console.error(file+' load error:', e); })
+    .finally(hideLoading);
+}
+
+// ─── Fit rating legend ────────────────────────────────────────────────────────
+var legend = L.control({position:'bottomright'});
+legend.onAdd = function() {
+  var div = L.DomUtil.create('div','map-legend');
+  div.innerHTML =
+    '<h4>Neighborhood Fit</h4>'+
+    '<div class="legend-item"><div class="legend-swatch" style="background:#2d7a27"></div><span>Strong</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch" style="background:#0d7a8a"></div><span>Moderate-Strong</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch" style="background:#c8922a"></div><span>Moderate</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch" style="background:#e87722"></div><span>Weak-Moderate</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch" style="background:#cc3300"></div><span>Skip</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch" style="background:#5f8dc8"></div><span>Reference Only</span></div>'+
+    '<hr class="legend-divider">'+
+    '<h4>Layers</h4>'+
+    '<div class="legend-item"><div class="legend-swatch dot" style="background:#2d7a27"></div><span>Park</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch dot" style="background:#0d7a8a"></div><span>Elementary school</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch dot" style="background:#6a0dad"></div><span>Middle school</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch dot" style="background:#c8922a"></div><span>High school</span></div>'+
+    '<div class="legend-item"><div class="legend-swatch line" style="background:#5f8dc8;width:24px"></div><span>Bike route</span></div>';
+  return div;
+};
+legend.addTo(map);
+
+// ─── Uptown / US Bank marker ──────────────────────────────────────────────────
+var uptownIcon = L.divIcon({
+  className:'',
+  html:'<div style="background:#1a1a2e;color:white;padding:4px 9px;border-radius:6px;font-size:.72rem;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.4);border:2px solid white;">US Bank HQ</div>',
+  iconAnchor:[42,14]
+});
+L.marker([35.2271,-80.8431], {icon:uptownIcon})
+  .addTo(map)
+  .bindPopup('<strong>US Bank Tower &mdash; Uptown Charlotte</strong><br>100 N Tryon St<br><span style="color:#555;font-size:.85rem">His workplace · all bike commutes measured from here</span>');
+</script>
+</body>
+</html>

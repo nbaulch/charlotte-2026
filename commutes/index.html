@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commutes — Charlotte 2026</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">🏠 Charlotte 2026</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="var nl=this.nextElementSibling;nl.classList.toggle('open');this.textContent=nl.classList.contains('open')?'✕':'☰'">☰</button>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../neighborhoods/index.html">Neighborhoods</a>
+      <a href="../schools/index.html">Schools</a>
+      <a href="../commutes/index.html" class="active">Commutes</a>
+      <a href="../amenities/index.html">Amenities</a>
+      <a href="../dining/index.html">Dining</a>
+      <a href="../real-estate/index.html">Real Estate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-content">
+  <h1>Commute Analysis</h1>
+  <p class="summary" style="max-width:760px;margin-bottom:32px;">Two very different commutes to optimize: his daily bike ride to Uptown (100 N Tryon St) and her ~2-day/week drive to Wake Forest University in Winston-Salem (~80–85 miles one way). Prioritizing his commute per the family's stated preference.</p>
+
+  <div class="card">
+    <h2><span class="icon">🚲</span> His Commute — Uptown Charlotte (100 N Tryon St)</h2>
+    <p>He's comfortable biking 5–10 miles each way. His Minneapolis sweet spot was 5.5 miles. He doesn't require dedicated greenway — fine on roads. The best Charlotte neighborhoods put him 1.5–3.5 miles from Uptown, well within his range.</p>
+    <p>The <strong>Uptown CycleLink</strong> (completed 2022) connects the Little Sugar Creek Greenway at 7th Street to the Uptown core via protected bike lanes on 4th and 5th Streets — a critical piece of infrastructure that makes the bike commute genuinely viable from Dilworth, Sedgefield, Plaza Midwood, and surrounding neighborhoods.</p>
+    <p>The <strong>Stewart Creek Greenway</strong> provides a separate protected route from Wesley Heights directly into Uptown — arguably the best pure greenway commute in the city.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🚗</span> Her Commute — Wake Forest University, Winston-Salem</h2>
+    <p>~80–85 miles from most Charlotte target neighborhoods. Route: neighborhood → I-277/I-85 North → I-40 West → Wake Forest University. At 2 days/week, this is a manageable but meaningful commitment.</p>
+    <p><strong>Key variable:</strong> Getting to I-85 North. Neighborhoods west of Uptown (Wesley Heights, Wilmore) have slightly faster I-85 access. Neighborhoods east of Uptown (Elizabeth, Chantilly, Plaza Midwood) must navigate across or around center city, adding time. The difference between best and worst is roughly 15–20 minutes.</p>
+    <p><strong>Realistic range:</strong> 75 min (Wesley Heights, best case) to 115 min (Myers Park, heavy traffic). Most neighborhoods cluster in the 80–100 minute range. At 2 days/week, even the 100-min commute is 200 minutes (3.3 hours) of driving — a real but manageable lifestyle constraint.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">📊</span> Neighborhood Commute Comparison</h2>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Neighborhood</th>
+            <th>His Bike Distance</th>
+            <th>His Bike Time</th>
+            <th>His Drive</th>
+            <th>Her Drive (WS)</th>
+            <th>Greenway Route?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#f0f9f0;">
+            <td><strong><a href="../neighborhoods/plaza-midwood.html">Plaza Midwood</a></strong></td>
+            <td>1–1.5 mi</td>
+            <td><strong>8–12 min ⭐</strong></td>
+            <td>5–7 min</td>
+            <td>~80–95 min</td>
+            <td>Little Sugar Creek → CycleLink</td>
+          </tr>
+          <tr style="background:#f0f9f0;">
+            <td><strong><a href="../neighborhoods/commonwealth.html">Commonwealth</a></strong></td>
+            <td>2–2.5 mi</td>
+            <td><strong>12–18 min</strong></td>
+            <td>8–10 min</td>
+            <td>~80–90 min</td>
+            <td>Little Sugar Creek → CycleLink</td>
+          </tr>
+          <tr style="background:#f0f9f0;">
+            <td><strong><a href="../neighborhoods/dilworth.html">Dilworth</a></strong></td>
+            <td>1.5–2.5 mi</td>
+            <td><strong>10–15 min</strong></td>
+            <td>5–10 min</td>
+            <td>~95–105 min</td>
+            <td>Little Sugar Creek → CycleLink</td>
+          </tr>
+          <tr style="background:#f0f9f0;">
+            <td><strong><a href="../neighborhoods/wesley-heights.html">Wesley Heights</a></strong></td>
+            <td>1.5–2.5 mi</td>
+            <td><strong>~14 min ⭐</strong></td>
+            <td>~5 min</td>
+            <td>~75–90 min ⭐</td>
+            <td>Stewart Creek Greenway (direct)</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/wilmore.html">Wilmore</a></strong></td>
+            <td>1.5–2.5 mi</td>
+            <td>10–15 min</td>
+            <td>5–8 min</td>
+            <td>~75–90 min ⭐</td>
+            <td>Irwin Creek → CycleLink</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/elizabeth.html">Elizabeth</a></strong></td>
+            <td>1.5–2.5 mi</td>
+            <td>8–15 min</td>
+            <td>5–10 min</td>
+            <td>~95–110 min</td>
+            <td>Little Sugar Creek (nearby)</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/chantilly.html">Chantilly</a></strong></td>
+            <td>2.5–3.5 mi</td>
+            <td>12–18 min</td>
+            <td>10–15 min</td>
+            <td>~95–110 min</td>
+            <td>On-road (Elizabeth Ave / Independence)</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/noda.html">NoDa</a></strong></td>
+            <td>2.5–3 mi</td>
+            <td>15–20 min</td>
+            <td>8–12 min</td>
+            <td>~80–90 min</td>
+            <td>Little Sugar Creek from Cordelia Park</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/colonial-village.html">Colonial Village</a></strong></td>
+            <td>2–3 mi</td>
+            <td>12–18 min</td>
+            <td>8–10 min</td>
+            <td>~85–95 min</td>
+            <td>On-road / some bike lanes</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/sedgefield.html">Sedgefield</a></strong></td>
+            <td>3–4 mi</td>
+            <td>15–20 min</td>
+            <td>10–15 min</td>
+            <td>~90–105 min</td>
+            <td>Little Sugar Creek → CycleLink</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/plaza-hills.html">Plaza Hills</a></strong></td>
+            <td>2–3 mi</td>
+            <td>15–20 min</td>
+            <td>10–12 min</td>
+            <td>~85–95 min</td>
+            <td>Little Sugar Creek → CycleLink</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/myers-park.html">Myers Park</a></strong></td>
+            <td>3.5–4.5 mi</td>
+            <td>18–25 min</td>
+            <td>10–15 min</td>
+            <td>~100–115 min</td>
+            <td>Little Sugar Creek (Freedom Park edge)</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/eastover.html">Eastover</a></strong></td>
+            <td>2–3 mi</td>
+            <td>15–20 min</td>
+            <td>5–8 min</td>
+            <td>~85–100 min</td>
+            <td>On-road (low bike infrastructure)</td>
+          </tr>
+          <tr>
+            <td><strong><a href="../neighborhoods/ashbrook-clawson.html">Ashbrook-Clawson</a></strong></td>
+            <td>4–5 mi</td>
+            <td>25–35 min</td>
+            <td>10–15 min</td>
+            <td>~85–100 min</td>
+            <td>Sugar Creek → Little Sugar Creek</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:12px;font-size:0.85rem;color:var(--text-muted);">Bike times estimated at comfortable 12–14 mph pace. Drive times under normal conditions — add 20–40% for peak rush hour. Her Winston-Salem times are estimates from neighborhood center to Wake Forest University main campus via I-85 N / I-40 W. All figures are approximations — verify with Google Maps from your specific address.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🏆</span> Commute Rankings</h2>
+    <div class="two-col">
+      <div>
+        <h3>Best for His Bike Commute</h3>
+        <ol>
+          <li><strong>Plaza Midwood</strong> — 1–1.5 mi / 8–12 min (closest, most protected route)</li>
+          <li><strong>Wesley Heights</strong> — 1.5–2.5 mi / ~14 min (best greenway: Stewart Creek directly to Uptown)</li>
+          <li><strong>Dilworth</strong> — 1.5–2.5 mi / 10–15 min (Little Sugar Creek → CycleLink)</li>
+          <li><strong>Wilmore</strong> — 1.5–2.5 mi / 10–15 min (Irwin Creek → CycleLink)</li>
+          <li><strong>Commonwealth</strong> — 2–2.5 mi / 12–18 min (same greenway as PM)</li>
+          <li><strong>Elizabeth / Chantilly</strong> — 2–3.5 mi / 8–18 min (good but more on-road)</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Best for Her Winston-Salem Commute</h3>
+        <ol>
+          <li><strong>Wesley Heights / Wilmore</strong> — ~75–90 min (west side, fast I-85 access)</li>
+          <li><strong>Plaza Midwood / Commonwealth / NoDa</strong> — ~80–95 min (central, good I-85 access)</li>
+          <li><strong>Dilworth / Sedgefield</strong> — ~90–105 min (south of Uptown, navigable)</li>
+          <li><strong>Elizabeth / Chantilly / Colonial Village</strong> — ~85–110 min (east side, must cross toward I-85)</li>
+          <li><strong>Myers Park</strong> — ~100–115 min (south-southeast, furthest from I-85 N)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🚇</span> Transit Options</h2>
+    <p>Charlotte has limited but growing transit infrastructure:</p>
+    <ul>
+      <li><strong>LYNX Blue Line:</strong> Light rail running from University City (north) through Uptown to Pineville (south). Key station for in-town neighborhoods: 7th Street (Elizabeth/NoDa adjacent). NoDa, Wilmore, and South End neighborhoods have Blue Line access.</li>
+      <li><strong>LYNX Gold Line:</strong> Streetcar running through Uptown. 7th Street station provides Elizabeth and NoDa access to Uptown. Limited but useful for specific commute patterns.</li>
+      <li><strong>CATSBus:</strong> Bus network connects most neighborhoods to Uptown. Less time-competitive than biking for most close-in neighborhoods.</li>
+      <li><strong>Uptown CycleLink:</strong> Protected bike lane network within Uptown connecting the Little Sugar Creek Greenway at 7th Street to the Uptown core. This is the infrastructure that makes greenway bike commuting practical for several of the target neighborhoods.</li>
+    </ul>
+    <p><strong>Bottom line on transit:</strong> For his Uptown commute, biking is better than transit from all close-in target neighborhoods. Transit becomes relevant only for days when biking is not feasible (heavy rain, illness, post-work obligations). The Blue Line is useful for NoDa and Wilmore residents specifically.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🌧️</span> Year-Round Biking in Charlotte</h2>
+    <p>Charlotte's climate makes year-round bike commuting genuinely viable — more so than Minneapolis:</p>
+    <ul>
+      <li><strong>Winters:</strong> Mild. Average lows in Jan–Feb: 32–36°F. Snow is rare (1-2 events/year typically, often less). Ice on roads is the primary winter concern — not consistent cold like Minneapolis. Most Charlotte winters allow biking most days.</li>
+      <li><strong>Springs and Falls:</strong> Excellent biking weather — 50–75°F range, moderate humidity.</li>
+      <li><strong>Summers:</strong> Hot and humid. July/August highs typically 90–95°F. Morning bike commutes (before 9am) are manageable; afternoon returns can be brutal. Having a shower at work or a towel wipe-down routine is useful. The humidity is real.</li>
+      <li><strong>Rain:</strong> Charlotte averages ~43 inches/year (more than Minneapolis's 32"). Rainfall is fairly distributed through the year — occasional heavy afternoon thunderstorms in summer. Not a significant biking barrier overall.</li>
+    </ul>
+    <p><strong>Minneapolis comparison:</strong> Charlotte has meaningfully fewer non-bikeable days per year than Minneapolis. The 4–5 months of Minneapolis winter (Nov–March) that make biking difficult don't apply here. Charlotte cyclists typically bike 10–11 months of the year comfortably.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="icon">🗺️</span> Key Infrastructure: Uptown CycleLink</h2>
+    <p>The Uptown CycleLink (completed 2022) transformed bike commuting in Charlotte. Protected lanes on 4th and 5th Streets connect the Little Sugar Creek Greenway (at 7th Street) through Uptown to west Charlotte connections. This means:</p>
+    <ul>
+      <li>Dilworth → Little Sugar Creek Greenway north → 7th Street → CycleLink → 100 N Tryon: <strong>protected nearly the entire way</strong></li>
+      <li>Plaza Midwood → similar route from Commonwealth/Thomas → 7th Street: <strong>excellent, mostly protected</strong></li>
+      <li>Wesley Heights → Stewart Creek Greenway → Uptown: <strong>greenway the full route</strong></li>
+      <li>Chantilly → Elizabeth Ave → 7th Street → CycleLink: <strong>on-road but low-traffic residential streets</strong></li>
+    </ul>
+    <p>He's comfortable on roads and doesn't require greenway, so all of these routes work for him. The greenway options are faster and lower-stress on rain days or high-traffic situations.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>Charlotte Relocation Research &mdash; Compiled February 2026</p>
+  <p style="margin-top:4px;">Sources: City of Charlotte (Uptown CycleLink), Mecklenburg County Parks, Walk Score, TravelMath, Google Maps estimates, resident accounts via Reddit r/Charlotte and Niche</p>
+</footer>
+
+</body>
+</html>

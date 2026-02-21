@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neighborhoods — Charlotte 2026</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="../index.html">🏠 Charlotte 2026</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="var nl=this.nextElementSibling;nl.classList.toggle('open');this.textContent=nl.classList.contains('open')?'✕':'☰'">☰</button>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="index.html" class="active">Neighborhoods</a>
+      <a href="../schools/index.html">Schools</a>
+      <a href="../commutes/index.html">Commutes</a>
+      <a href="../amenities/index.html">Amenities</a>
+      <a href="../dining/index.html">Dining</a>
+      <a href="../real-estate/index.html">Real Estate</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>14 Neighborhoods</h1>
+  <p class="tagline">Evaluated against your family's priorities. Click any neighborhood for the full profile.</p>
+</div>
+
+<div class="page-content">
+
+  <div style="margin-bottom:28px;">
+    <a href="map.html" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:white;text-decoration:none;padding:10px 20px;border-radius:8px;font-weight:600;font-size:0.95rem;">
+      <span>🗺️</span> View Interactive Map
+    </a>
+    <span style="margin-left:12px;color:var(--text-muted);font-size:0.85rem;">Neighborhoods color-coded by fit · parks · bike routes · school boundaries</span>
+  </div>
+
+  <!-- TIER 1: TOP CANDIDATES -->
+  <div class="section-header">
+    <h2>Tier 1 — Top Candidates</h2>
+    <p>Best overall fit based on community feel, schools, budget, and commute.</p>
+  </div>
+
+  <div class="nbhd-grid">
+
+    <a class="nbhd-card" href="chantilly.html">
+      <div class="nbhd-card-header">
+        <h3>Chantilly</h3>
+        <span class="fit-badge fit-strong">Strong Fit</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28204</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>$864k–$995k</span></div>
+        <div class="nbhd-card-stat"><span>Walk Score</span><span>47 (edges touch PM)</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~12 min</span></div>
+        <div class="nbhd-card-stat"><span>Households w/ kids</span><span>~25%</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>Eastover (10/10)</span></div>
+        <div class="nbhd-card-note">Traffic-calmed enclave, 70% homeownership, "Chantilly Shuffle" — residents stay for years. Closest match to Lynnhurst.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="dilworth.html">
+      <div class="nbhd-card-header">
+        <h3>Dilworth</h3>
+        <span class="fit-badge fit-moderate-strong">Moderate–Strong</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28203</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$926k (county data)</span></div>
+        <div class="nbhd-card-stat"><span>Walk Score</span><span>78 (Very Walkable)</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~12 min</span></div>
+        <div class="nbhd-card-stat"><span>Households w/ kids</span><span>11–12% ⚠️</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>New Park Rd Elem (2026)</span></div>
+        <div class="nbhd-card-note">Best walkability + greenway bike commute. Freedom Park adjacent. Low family density is the main caveat.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="plaza-midwood.html">
+      <div class="nbhd-card-header">
+        <h3>Plaza Midwood</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28205</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$804k–$825k</span></div>
+        <div class="nbhd-card-stat"><span>Walk Score</span><span>72 (Very Walkable)</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~15 min ✨</span></div>
+        <div class="nbhd-card-stat"><span>Households w/ kids</span><span>Moderate</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>Shamrock Gardens (5/10) ⚠️</span></div>
+        <div class="nbhd-card-note">Best restaurant/coffee scene, great bikeability. School pipeline is a problem — plan magnet/private from day one.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="sedgefield.html">
+      <div class="nbhd-card-header">
+        <h3>Sedgefield</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28209</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$915k (county data)</span></div>
+        <div class="nbhd-card-stat"><span>Walk Score</span><span>55</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~18 min</span></div>
+        <div class="nbhd-card-stat"><span>Households w/ kids</span><span>~22%</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>Dilworth ES / Sedgefield Montessori</span></div>
+        <div class="nbhd-card-note">Best value for housing character. 1930s–1950s bungalows. Budget goes furthest here among quality neighborhoods.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="elizabeth.html">
+      <div class="nbhd-card-header">
+        <h3>Elizabeth</h3>
+        <span class="fit-badge fit-weak-moderate">Weak–Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28204</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$769k–$890k</span></div>
+        <div class="nbhd-card-stat"><span>Walk Score</span><span>66</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~10 min</span></div>
+        <div class="nbhd-card-stat"><span>Households w/ kids</span><span>~8% ⚠️</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>Eastover ES (10/10)</span></div>
+        <div class="nbhd-card-note">Historic homes, excellent schools, shortest bike commute. But only 8% households with kids — lowest on the list. Conflicts with #1 priority.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="myers-park.html">
+      <div class="nbhd-card-header">
+        <h3>Myers Park</h3>
+        <span class="fit-badge fit-moderate">Moderate (Budget)</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28207</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>$2.0M (county data)</span></div>
+        <div class="nbhd-card-stat"><span>Walk Score</span><span>43</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~20 min</span></div>
+        <div class="nbhd-card-stat"><span>Households w/ kids</span><span>31% ✅</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>Selwyn ES (9/10)</span></div>
+        <div class="nbhd-card-note">Best schools + highest family density, but $1.4M+ median. Budget buys bottom of market. Skews conservative/old-Charlotte culturally.</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- TIER 2: WORTH CONSIDERING -->
+  <div class="section-header" style="margin-top:36px;">
+    <h2>Tier 2 — Worth Considering</h2>
+    <p>Solid options with specific trade-offs to evaluate.</p>
+  </div>
+
+  <div class="nbhd-grid">
+
+    <a class="nbhd-card" href="commonwealth.html">
+      <div class="nbhd-card-header">
+        <h3>Commonwealth</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28205</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$722k</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~12 min</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>Shamrock Gardens (5/10) ⚠️</span></div>
+        <div class="nbhd-card-note">Underrated neighbor to Plaza Midwood. Budget goes above median. Veteran Memorial Park has splash pad. Same school pipeline concern as PM.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="wilmore.html">
+      <div class="nbhd-card-header">
+        <h3>Wilmore</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28203</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$693k–$725k</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~8 min</span></div>
+        <div class="nbhd-card-stat"><span>Elementary</span><span>New Park Rd Elem (2026)</span></div>
+        <div class="nbhd-card-note">Dilworth character at more affordable price. 1920s bungalows, historic designation, light rail access. Airport noise concern (west side).</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="wesley-heights.html">
+      <div class="nbhd-card-header">
+        <h3>Wesley Heights</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28208</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$450k–$680k</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~10 min ✨ greenway</span></div>
+        <div class="nbhd-card-stat"><span>Flood risk</span><span>21% severe ⚠️</span></div>
+        <div class="nbhd-card-note">Best greenway bike commute in the city (Stewart Creek → Uptown). Budget goes very far. Verify specific address flood risk before pursuing.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="colonial-village.html">
+      <div class="nbhd-card-header">
+        <h3>Colonial Village</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28204</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$625k</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~12 min</span></div>
+        <div class="nbhd-card-stat"><span>Her commute</span><span>~80–90 min ✨</span></div>
+        <div class="nbhd-card-note">Best combination for both commutes. Near NoDa, LoSo breweries walkable. 1950s ranch/split-level style — less architectural character than bungalow neighborhoods.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="noda.html">
+      <div class="nbhd-card-header">
+        <h3>NoDa</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28206</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$430k (SFH scarce)</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~15 min</span></div>
+        <div class="nbhd-card-stat"><span>Her commute</span><span>~80–90 min ✨</span></div>
+        <div class="nbhd-card-note">Arts district, best I-85 access for her. But SFH with yard is rare — neighborhood skews toward condos/townhomes. Assess whether it's family-oriented enough.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="plaza-hills.html">
+      <div class="nbhd-card-header">
+        <h3>Plaza Hills</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28205</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>$710k–$1.5M (wide range)</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~20 min</span></div>
+        <div class="nbhd-card-stat"><span>Her commute</span><span>~85–95 min</span></div>
+        <div class="nbhd-card-note">Adjacent to Plaza Midwood. Original mid-century ranch homes + new construction. New builds dominating market at $1.5M+; original stock is accessible if you find it.</div>
+      </div>
+    </a>
+
+    <a class="nbhd-card" href="ashbrook-clawson.html">
+      <div class="nbhd-card-header">
+        <h3>Ashbrook-Clawson Village</h3>
+        <span class="fit-badge fit-moderate">Moderate</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28208</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>~$629k–$703k</span></div>
+        <div class="nbhd-card-stat"><span>Bike to Uptown</span><span>~27–30 min</span></div>
+        <div class="nbhd-card-stat"><span>Her commute</span><span>~100–110 min</span></div>
+        <div class="nbhd-card-note">Budget goes above median. Fast-moving market (26 days DOM). Furthest from Uptown — at the edge of his bike comfort range. Less architectural character than bungalow neighborhoods.</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- TIER 3: REFERENCE / SKIP -->
+  <div class="section-header" style="margin-top:36px;">
+    <h2>Reference / Skip</h2>
+    <p>Included for context — not recommended as primary options for this family.</p>
+  </div>
+
+  <div class="nbhd-grid">
+
+    <a class="nbhd-card" href="eastover.html">
+      <div class="nbhd-card-header">
+        <h3>Eastover</h3>
+        <span class="fit-badge fit-reference">Reference Only</span>
+      </div>
+      <div class="nbhd-card-body">
+        <div class="nbhd-card-stat"><span>Zip</span><span>28207</span></div>
+        <div class="nbhd-card-stat"><span>Median price</span><span>$2.0M–$2.2M+</span></div>
+        <div class="nbhd-card-stat"><span>In budget</span><span>Nothing suitable ❌</span></div>
+        <div class="nbhd-card-note">Charlotte's most exclusive enclave. Grand estates, century-old architecture. Included as a reference point — true 4bd SFH starts at $1.5M–$2M+. Budget-incompatible.</div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- FULL COMPARISON TABLE -->
+  <div class="section-header" style="margin-top:36px;">
+    <h2>Side-by-Side Comparison</h2>
+    <p>All neighborhoods across key metrics. Scroll right on mobile.</p>
+  </div>
+
+  <div class="card">
+    <div class="compare-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Neighborhood</th>
+            <th>Fit</th>
+            <th>Walk Score</th>
+            <th>Bike Score</th>
+            <th>Median Price</th>
+            <th>In Budget?</th>
+            <th>% w/ Kids</th>
+            <th>Elementary</th>
+            <th>Bike Commute</th>
+            <th>Her WS Drive</th>
+            <th>Safety</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="chantilly.html">Chantilly</a></td>
+            <td><span class="fit-badge fit-strong" style="font-size:0.7rem;padding:3px 8px;">Strong</span></td>
+            <td>47</td><td>37</td>
+            <td>$864k–$995k</td>
+            <td><span class="badge badge-yellow">Upper edge</span></td>
+            <td>~25%</td>
+            <td>Eastover ES 10/10</td>
+            <td>~12 min</td><td>~85–95 min</td>
+            <td>A (excellent)</td>
+          </tr>
+          <tr>
+            <td><a href="dilworth.html">Dilworth</a></td>
+            <td><span class="fit-badge fit-moderate-strong" style="font-size:0.7rem;padding:3px 8px;">Mod–Strong</span></td>
+            <td>78</td><td>61</td>
+            <td>~$926k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>11–12%</td>
+            <td>Park Rd Elem (new)</td>
+            <td>~12 min</td><td>~90–105 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="plaza-midwood.html">Plaza Midwood</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>72</td><td>—</td>
+            <td>~$804k–$825k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>Moderate</td>
+            <td>Shamrock Gardens 5/10 ⚠️</td>
+            <td>~15 min ✨</td><td>~85–95 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="sedgefield.html">Sedgefield</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>55</td><td>57</td>
+            <td>~$915k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>~22%</td>
+            <td>Dilworth ES 8/10</td>
+            <td>~18 min</td><td>~95–105 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="elizabeth.html">Elizabeth</a></td>
+            <td><span class="fit-badge fit-weak-moderate" style="font-size:0.7rem;padding:3px 8px;">Weak–Mod</span></td>
+            <td>66</td><td>44</td>
+            <td>~$769k–$890k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>~8%</td>
+            <td>Eastover ES 10/10</td>
+            <td>~10 min</td><td>~85–95 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="myers-park.html">Myers Park</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Mod (budget)</span></td>
+            <td>43</td><td>46</td>
+            <td>~$2.0M</td>
+            <td><span class="badge badge-red">Tight</span></td>
+            <td>31%</td>
+            <td>Selwyn ES 9/10</td>
+            <td>~20 min</td><td>~95–115 min</td>
+            <td>A (excellent)</td>
+          </tr>
+          <tr>
+            <td><a href="commonwealth.html">Commonwealth</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>—</td><td>—</td>
+            <td>~$722k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>—</td>
+            <td>Shamrock Gardens 5/10 ⚠️</td>
+            <td>~12 min</td><td>~85–95 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="wilmore.html">Wilmore</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>—</td><td>—</td>
+            <td>~$693k–$725k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>—</td>
+            <td>Park Rd Elem (new)</td>
+            <td>~8 min</td><td>~90–100 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="wesley-heights.html">Wesley Heights</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>—</td><td>—</td>
+            <td>~$450k–$680k</td>
+            <td><span class="badge badge-green">Budget goes far</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td>~10 min ✨</td><td>~95–105 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="noda.html">NoDa</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>—</td><td>—</td>
+            <td>~$430k (SFH scarce)</td>
+            <td><span class="badge badge-yellow">SFH limited</span></td>
+            <td>—</td>
+            <td>Villa Heights ES</td>
+            <td>~15 min</td><td>~80–90 min ✨</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="colonial-village.html">Colonial Village</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>—</td><td>—</td>
+            <td>~$625k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>—</td>
+            <td>—</td>
+            <td>~12 min</td><td>~80–90 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="plaza-hills.html">Plaza Hills</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>—</td><td>—</td>
+            <td>$710k–$1.5M</td>
+            <td><span class="badge badge-yellow">Stretch</span></td>
+            <td>—</td>
+            <td>Shamrock Gardens ⚠️</td>
+            <td>~20 min</td><td>~85–95 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="ashbrook-clawson.html">Ashbrook-Clawson</a></td>
+            <td><span class="fit-badge fit-moderate" style="font-size:0.7rem;padding:3px 8px;">Moderate</span></td>
+            <td>—</td><td>—</td>
+            <td>~$629k–$703k</td>
+            <td><span class="badge badge-green">Good</span></td>
+            <td>—</td>
+            <td>Berryhill ES</td>
+            <td>~27–30 min</td><td>~100–110 min</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td><a href="eastover.html">Eastover</a></td>
+            <td><span class="fit-badge fit-reference" style="font-size:0.7rem;padding:3px 8px;">Reference</span></td>
+            <td>—</td><td>—</td>
+            <td>$2.0M–$2.2M+</td>
+            <td><span class="badge badge-red">Out of budget</span></td>
+            <td>—</td>
+            <td>Eastover ES 10/10</td>
+            <td>~22 min</td><td>~95–115 min</td>
+            <td>A (excellent)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="data-note">Walk/Bike Scores: walkscore.com. Median prices: Mecklenburg County parcel data (mailing zip) + WebSearch market estimates (Feb 2026). % households with kids: Charlotte Parent / Niche. Commutes: estimates at 12 mph bike / typical AM traffic drive. ✨ = greenway route available.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>Charlotte Relocation Research &mdash; Compiled February 2026</p>
+</footer>
+
+</body>
+</html>
