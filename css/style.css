@@ -155,11 +155,11 @@ nav {
 
 .fit-badge {
   display: inline-block;
-  padding: 8px 20px;
+  padding: 4px 11px;
   border-radius: 24px;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
   margin-top: 4px;
