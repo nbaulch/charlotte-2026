@@ -82,7 +82,6 @@
       <a href="../index.html">Home</a>
       <a href="index.html" class="active">Neighborhoods</a>
       <a href="../schools/index.html">Schools</a>
-      <a href="../commutes/index.html">Commutes</a>
       <a href="../amenities/index.html">Amenities</a>
       <a href="../dining/index.html">Dining</a>
       <a href="../real-estate/index.html">Real Estate</a>
@@ -112,7 +111,6 @@
         <li><span class="hood-dot" style="background:#2d7a27"></span><a href="plaza-midwood.html">Plaza Midwood</a><span class="hood-fit-badge strong">Strong</span></li>
         <li><span class="hood-dot" style="background:#2d7a27"></span><a href="commonwealth.html">Commonwealth</a><span class="hood-fit-badge strong">Strong</span></li>
         <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="dilworth.html">Dilworth</a><span class="hood-fit-badge mod-strong">Mod-Strong</span></li>
-        <li><span class="hood-dot" style="background:#0d7a8a"></span><a href="wesley-heights.html">Wesley Heights</a><span class="hood-fit-badge mod-strong">Mod-Strong</span></li>
       </ul>
     </div>
     <div class="sidebar-card">
@@ -162,9 +160,6 @@ var npaData = {
   388: {name:"Wilmore", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"wilmore.html",
         desc:"Small historic neighborhood just south of Dilworth. Closest bike commute to Uptown of any neighborhood (~1.5 mi). Still transitioning.",
         commute:"~1.5 mi to Uptown — ~8 min bike ⭐", schools:"Park Road Elem (new, fall 2026)"},
-  361: {name:"Wesley Heights", fit:"Moderate-Strong Fit", fitShort:"Mod-Strong", color:"#0d7a8a", page:"wesley-heights.html",
-        desc:"Emerging west-side neighborhood. Stewart Creek Greenway runs directly to Uptown. Authentic bungalow character. Best west-side option.",
-        commute:"~2 mi via Stewart Creek Greenway — ~14 min bike ⭐", schools:"Ashley Park PreK-8"},
   476: {name:"Colonial Village", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"colonial-village.html",
         desc:"Stable, safe neighborhood adjacent to Elizabeth. Mid-century homes on larger lots. Less walkable and less energetic than top picks.",
         commute:"~2.5 mi to Uptown — ~12 min bike", schools:"Eastover Elem"},
@@ -172,7 +167,7 @@ var npaData = {
         desc:"More suburban feel east of Plaza Midwood. Good budget value. Little Sugar Creek Greenway access. Less neighborhood energy than PM.",
         commute:"~4 mi to Uptown — ~20 min bike", schools:"Shamrock Gardens Elem ⚠️"},
   367: {name:"Elizabeth", fit:"Weak-Moderate Fit", fitShort:"Weak-Mod", color:"#e87722", page:"elizabeth.html",
-        desc:"Historic architecture, great coffee/dining, excellent bike commute. But only 8% of households have children — the lowest of any neighborhood.",
+        desc:"Historic architecture, great coffee/dining, excellent bike access to Uptown. Lower homeowner density than top picks — building a young-family community takes more cultivation.",
         commute:"~1.5 mi to Uptown — ~8–15 min bike", schools:"Eastover Elem 10/10 (if zoned)"},
   11:  {name:"Sedgefield / Myers Park Edge", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"sedgefield.html",
         desc:"NPA straddling Sedgefield north and Myers Park southern fringe. Established, good schools, greenway access, limited walkability.",
@@ -456,7 +451,7 @@ var uptownIcon = L.divIcon({
 });
 L.marker([35.2271,-80.8431], {icon:uptownIcon})
   .addTo(map)
-  .bindPopup('<strong>US Bank Tower &mdash; Uptown Charlotte</strong><br>100 N Tryon St<br><span style="color:#555;font-size:.85rem">His workplace · all bike commutes measured from here</span>');
+  .bindPopup('<strong>US Bank Tower &mdash; Uptown Charlotte</strong><br>100 N Tryon St<br><span style="color:#555;font-size:.85rem">Uptown office · bike commute reference point for all neighborhoods</span>');
 </script>
 </body>
 </html>

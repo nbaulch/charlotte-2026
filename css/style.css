@@ -411,6 +411,12 @@ tr:hover td { background: var(--teal-light); }
   -webkit-overflow-scrolling: touch;
 }
 
+/* Budget reality tables — keep readable on mobile without horizontal scroll */
+.budget-table { width: 100%; table-layout: fixed; }
+.budget-table td, .budget-table th { word-wrap: break-word; }
+.budget-table th:first-child, .budget-table td:first-child { width: 22%; }
+.budget-table th:last-child, .budget-table td:last-child { width: 14%; }
+
 .compare-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -741,13 +747,12 @@ footer a { color: rgba(255,255,255,0.8); }
   td, th { padding: 6px 9px; }
 
   /* ---- Comparison table — drop less-useful columns ---- */
-  /* Keep: 1=Neighborhood, 2=Fit, 5=Price, 8=School, 9=Bike commute */
+  /* Table now 9 cols: 1=Neighborhood, 2=Fit, 3=Walk, 4=Bike, 5=Price, 6=Budget, 7=School, 8=Bike commute, 9=Safety */
+  /* Keep on mobile: 1=Neighborhood, 2=Fit, 5=Price, 7=School, 8=Bike commute */
   .compare-table th:nth-child(3), .compare-table td:nth-child(3),
   .compare-table th:nth-child(4), .compare-table td:nth-child(4),
   .compare-table th:nth-child(6), .compare-table td:nth-child(6),
-  .compare-table th:nth-child(7), .compare-table td:nth-child(7),
-  .compare-table th:nth-child(10), .compare-table td:nth-child(10),
-  .compare-table th:nth-child(11), .compare-table td:nth-child(11) { display: none; }
+  .compare-table th:nth-child(9), .compare-table td:nth-child(9) { display: none; }
 
   /* ---- Pipeline — stack vertically ---- */
   .pipeline { flex-direction: column; align-items: flex-start; gap: 2px; }
