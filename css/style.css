@@ -652,78 +652,128 @@ footer a { color: rgba(255,255,255,0.8); }
   background: none;
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   cursor: pointer;
-  padding: 14px 8px;
+  padding: 12px 8px;
   margin-left: auto;
   line-height: 1;
   flex-shrink: 0;
 }
 
 @media (max-width: 660px) {
-  /* Show hamburger, hide links by default */
+
+  /* ---- Nav ---- */
   .nav-toggle { display: block; }
-
-  .nav-inner {
-    flex-wrap: wrap;
-    padding: 0 14px;
-  }
-
-  .nav-brand { margin-right: 0; }
-
+  .nav-inner { flex-wrap: wrap; padding: 0 12px; }
+  .nav-brand { margin-right: 0; padding: 12px 0; font-size: 1rem; }
   .nav-links {
     display: none;
     flex-direction: column;
     gap: 0;
     width: 100%;
     border-top: 1px solid rgba(255,255,255,0.15);
-    padding-bottom: 6px;
   }
-
   .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 4px; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.9rem; }
 
-  .nav-links a {
-    padding: 13px 6px;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-    font-size: 0.95rem;
-  }
+  /* ---- Global base ---- */
+  body { font-size: 15px; }
 
-  /* Typography */
-  .hero h1 { font-size: 1.65rem; }
-  .hero .tagline { font-size: 1rem; }
-  .nbhd-hero h1 { font-size: 1.75rem; }
-  .nbhd-hero .summary { font-size: 0.95rem; }
-  .section-header h2 { font-size: 1.3rem; }
+  /* ---- Heroes ---- */
+  .hero { padding: 24px 14px 20px; }
+  .hero h1 { font-size: 1.35rem; }
+  .hero .tagline { font-size: 0.9rem; }
+  .hero .meta { font-size: 0.78rem; }
+  .nbhd-hero { padding: 18px 14px 14px; }
+  .nbhd-hero-inner { flex-direction: column; gap: 8px; }
+  .nbhd-hero h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  .nbhd-hero .summary { font-size: 0.86rem; }
 
-  /* Spacing */
-  .page-content { padding: 20px 14px 48px; }
-  .card { padding: 20px 16px; }
-  .bottom-line { padding: 20px 16px; }
+  /* ---- Fit badges — smaller everywhere ---- */
+  .fit-badge { padding: 2px 7px; font-size: 0.6rem; letter-spacing: 0.02em; }
 
-  /* Quick stats — 3-across grid on phones */
-  .quick-stats { padding: 16px 14px; }
+  /* ---- Page structure ---- */
+  .page-content { padding: 12px 10px 36px; }
+  .section-header { margin: 20px 0 12px; }
+  .section-header h2 { font-size: 1.15rem; }
+  .section-header p { font-size: 0.84rem; }
+
+  /* ---- Cards ---- */
+  .card { padding: 14px 12px; margin-bottom: 14px; }
+  .card h2 { font-size: 1rem; margin-bottom: 10px; padding-bottom: 8px; }
+  .card h3 { font-size: 0.92rem; margin: 12px 0 6px; }
+  .card p { font-size: 0.86rem; margin-bottom: 8px; }
+  .card li { font-size: 0.86rem; margin-bottom: 3px; }
+  .bottom-line { padding: 16px 12px; }
+  .bottom-line h2 { font-size: 1rem; }
+
+  /* ---- Quick stats — compact 3-col ---- */
+  .quick-stats { padding: 10px 12px; }
   .quick-stats-inner {
-    gap: 8px 24px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 6px 4px;
     justify-items: center;
   }
   .stat-item { min-width: unset; }
-  .stat-value { font-size: 1.25rem; }
+  .stat-value { font-size: 1.05rem; }
+  .stat-label { font-size: 0.65rem; }
 
-  /* Make cards in map sidebar stack */
+  /* ---- Neighborhood index cards ---- */
+  .nbhd-card-header { padding: 12px 14px 8px; }
+  .nbhd-card-header h3 { font-size: 1rem; margin-bottom: 4px; }
+  .nbhd-card-body { padding: 10px 14px 12px; }
+  .nbhd-card-stat { font-size: 0.8rem; margin-bottom: 3px; }
+  .nbhd-card-note { font-size: 0.76rem; padding-top: 8px; margin-top: 8px; }
+
+  /* ---- All tables — scrollable block ---- */
+  .card table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.78rem;
+  }
+  td, th { padding: 6px 9px; }
+
+  /* ---- Comparison table — drop less-useful columns ---- */
+  /* Keep: 1=Neighborhood, 2=Fit, 5=Price, 8=School, 9=Bike commute */
+  .compare-table th:nth-child(3), .compare-table td:nth-child(3),
+  .compare-table th:nth-child(4), .compare-table td:nth-child(4),
+  .compare-table th:nth-child(6), .compare-table td:nth-child(6),
+  .compare-table th:nth-child(7), .compare-table td:nth-child(7),
+  .compare-table th:nth-child(10), .compare-table td:nth-child(10),
+  .compare-table th:nth-child(11), .compare-table td:nth-child(11) { display: none; }
+
+  /* ---- Pipeline — stack vertically ---- */
+  .pipeline { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .pipeline-arrow { transform: rotate(90deg); margin-left: 14px; font-size: 0.9rem; }
+  .pipeline-school { padding: 4px 10px; font-size: 0.82rem; }
+
+  /* ---- Callouts ---- */
+  .callout { font-size: 0.84rem; padding: 10px 12px; }
+
+  /* ---- Map sidebar ---- */
   .map-sidebar { grid-template-columns: 1fr; }
-
-  /* Tables: add -webkit-overflow for iOS */
   .compare-wrap { -webkit-overflow-scrolling: touch; }
 
-  /* Ensure hero flex stacks badge under title */
-  .nbhd-hero-inner { flex-direction: column; gap: 12px; }
+  /* ---- Home page picks ---- */
+  .pick-item { gap: 10px; padding: 10px 0; }
+  .pick-rank { width: 24px; height: 24px; font-size: 0.75rem; flex-shrink: 0; }
+  .pick-info h4 { font-size: 0.9rem; }
+  .pick-info p { font-size: 0.82rem; }
+
+  /* ---- Quick nav pills ---- */
+  .quick-nav { gap: 7px; }
+  .quick-nav a { padding: 7px 13px; font-size: 0.8rem; }
+
+  /* ---- Score bars ---- */
+  .score-label { min-width: 70px; font-size: 0.76rem; }
+  .score-num { font-size: 0.78rem; }
 }
 
 @media (max-width: 400px) {
-  /* Very small phones */
   .quick-stats-inner { grid-template-columns: repeat(2, 1fr); }
-  .stat-value { font-size: 1.15rem; }
-  .hero h1 { font-size: 1.4rem; }
+  .stat-value { font-size: 0.95rem; }
+  .hero h1 { font-size: 1.15rem; }
+  .nbhd-hero h1 { font-size: 1.2rem; }
 }
