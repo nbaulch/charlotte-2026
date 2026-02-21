@@ -16,13 +16,13 @@
   --shadow:     0 2px 8px rgba(0,0,0,0.08);
 
   /* Fit badge colors */
-  --fit-strong:          #1b5e20;
-  --fit-moderate-strong: #2e7d32;
-  --fit-moderate:        #e65100;
-  --fit-weak-moderate:   #bf360c;
-  --fit-weak:            #b71c1c;
-  --fit-skip:            #555;
-  --fit-reference:       #0d47a1;
+  --fit-strong:          #2d7a27;
+  --fit-moderate-strong: #0d7a8a;
+  --fit-moderate:        #c8922a;
+  --fit-weak-moderate:   #e87722;
+  --fit-weak:            #cc3300;
+  --fit-skip:            #cc3300;
+  --fit-reference:       #5f8dc8;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -406,6 +406,11 @@ tr:hover td { background: var(--teal-light); }
 }
 
 /* ---- COMPARISON TABLE ---- */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .compare-wrap {
   overflow-x: auto;
 }
@@ -753,7 +758,12 @@ footer a { color: rgba(255,255,255,0.8); }
 
   /* ---- Map sidebar ---- */
   .map-sidebar { grid-template-columns: 1fr; }
-  .compare-wrap { -webkit-overflow-scrolling: touch; }
+  .table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-wrap { -webkit-overflow-scrolling: touch; }
 
   /* ---- Home page picks ---- */
   .pick-item { gap: 10px; padding: 10px 0; }
