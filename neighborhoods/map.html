@@ -93,7 +93,7 @@
   <div class="map-page-header">
     <div>
       <h1>Neighborhood Map</h1>
-      <p>14 target neighborhoods color-coded by fit. Toggle layers for parks, bike routes, and future school boundaries. Click anything to see details.</p>
+      <p>17 target neighborhoods color-coded by fit. Toggle layers for parks, bike routes, and future school boundaries. Click anything to see details.</p>
     </div>
     <a class="map-back" href="index.html">← Back to all neighborhoods</a>
   </div>
@@ -121,7 +121,11 @@
         <li><span class="hood-dot" style="background:#c8922a"></span><a href="colonial-village.html">Colonial Village</a><span class="hood-fit-badge moderate">Moderate</span></li>
         <li><span class="hood-dot" style="background:#c8922a"></span><a href="plaza-hills.html">Plaza Hills</a><span class="hood-fit-badge moderate">Moderate</span></li>
         <li><span class="hood-dot" style="background:#c8922a"></span><a href="ashbrook-clawson.html">Ashbrook-Clawson</a><span class="hood-fit-badge moderate">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="cherry.html">Cherry</a><span class="hood-fit-badge moderate">Moderate</span></li>
+        <li><span class="hood-dot" style="background:#c8922a"></span><a href="plaza-shamrock.html">Plaza-Shamrock</a><span class="hood-fit-badge moderate">Moderate</span></li>
         <li><span class="hood-dot" style="background:#e87722"></span><a href="elizabeth.html">Elizabeth</a><span class="hood-fit-badge weak-mod">Weak-Mod</span></li>
+        <li><span class="hood-dot" style="background:#e87722"></span><a href="villa-heights.html">Villa Heights</a><span class="hood-fit-badge weak-mod">Weak-Mod</span></li>
+        <li><span class="hood-dot" style="background:#e87722"></span><a href="grier-heights.html">Grier Heights</a><span class="hood-fit-badge weak-mod">Weak-Mod</span></li>
         <li><span class="hood-dot" style="background:#cc3300"></span><a href="noda.html">NoDa</a><span class="hood-fit-badge skip">Skip</span></li>
         <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="myers-park.html">Myers Park</a><span class="hood-fit-badge reference">Reference</span></li>
         <li><span class="hood-dot" style="background:#5f8dc8"></span><a href="eastover.html">Eastover</a><span class="hood-fit-badge reference">Reference</span></li>
@@ -179,6 +183,32 @@ var npaData = {
   364: {name:"Eastover", fit:"Reference Only", fitShort:"Reference", color:"#5f8dc8", page:"eastover.html",
         desc:"Historic upscale enclave with estate lots. Well above budget ceiling. Included for geographic reference.",
         commute:"~2.5 mi to Uptown — ~15 min bike", schools:"Eastover Elem 10/10"},
+  // ── New neighborhoods ──────────────────────────────────────────────────────
+  163: {name:"Cherry", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"cherry.html",
+        desc:"Historic close-in neighborhood south of Uptown. Walk Score 80, best transit access. Low homeownership (31%) and elevated crime work against family community priority.",
+        commute:"~1.5 mi to Uptown — ~8 min bike", schools:"Elizabeth Traditional 7/10"},
+  10:  {name:"Plaza-Shamrock", fit:"Moderate Fit", fitShort:"Moderate", color:"#c8922a", page:"plaza-shamrock.html",
+        desc:"Community-proud neighborhood east of Plaza Midwood. Neighborhood association since 1950, shamrock street signs, midcentury homes on generous lots.",
+        commute:"~3.5 mi to Uptown — ~20 min bike", schools:"Shamrock Gardens 5/10"},
+  386: {name:"Villa Heights", fit:"Weak-Moderate Fit", fitShort:"Weak-Mod", color:"#e87722", page:"villa-heights.html",
+        desc:"Rapidly gentrifying former textile-mill neighborhood north of NoDa. Cordelia Park (24 acres), Cross Charlotte Trail. Very low family density (9%).",
+        commute:"~2.5 mi to Uptown — ~15 min bike", schools:"Villa Heights Elem 3/10 ⚠️"},
+  370: {name:"Grier Heights", fit:"Weak-Moderate Fit", fitShort:"Weak-Mod", color:"#e87722", page:"grier-heights.html",
+        desc:"Historic African American neighborhood since 1890s. Zoned for Myers Park High (A-rated). Highest crime in study (365% above avg).",
+        commute:"~2 mi to Uptown — ~10 min bike", schools:"Myers Park High (A)"},
+  // ── Fold-in NPAs (link to parent page) ─────────────────────────────────────
+  86:  {name:"Commonwealth Park", fit:"Strong Fit (fold-in)", fitShort:"Strong", color:"#2d7a27", page:"commonwealth.html",
+        desc:"Adjacent to Commonwealth proper. New 'The Commonwealth' mixed-use (Uchi, Van Leeuwen). Walk Score 66–85.", commute:"", schools:""},
+  2:   {name:"Commonwealth Park", fit:"Strong Fit (fold-in)", fitShort:"Strong", color:"#2d7a27", page:"commonwealth.html",
+        desc:"Part of the Commonwealth Park area. Shares Commonwealth's character and amenities.", commute:"", schools:""},
+  13:  {name:"Collingwood", fit:"Moderate Fit (fold-in)", fitShort:"Moderate", color:"#c8922a", page:"chantilly.html",
+        desc:"Quiet residential area adjacent to Chantilly. Midcentury homes ~$600k, light rail access.", commute:"", schools:""},
+  18:  {name:"Wendover-Sedgewood", fit:"Moderate Fit (fold-in)", fitShort:"Moderate", color:"#c8922a", page:"sedgefield.html",
+        desc:"South of Sedgefield along Wendover Road. Expensive ($1.1M+), Walk Score 22 — likely a skip for this family.", commute:"", schools:""},
+  314: {name:"Country Club Heights", fit:"Moderate Fit (fold-in)", fitShort:"Moderate", color:"#c8922a", page:"plaza-hills.html",
+        desc:"1950s–60s ranch homes east of Plaza-Shamrock. Active neighborhood assoc, Briar Creek Greenway, $478k median.", commute:"", schools:""},
+  11:  {name:"Freedom Park", fit:"Landmark", fitShort:"Landmark", color:"#2d7a27", page:"dilworth.html",
+        desc:"Charlotte's premier 98-acre family park — playgrounds, spray pad, dog park, duck pond. Adjacent to Dilworth.", commute:"", schools:""},
 };
 
 // ─── Map setup ────────────────────────────────────────────────────────────────
